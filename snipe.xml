@@ -1,0 +1,22 @@
+<Ui xsi:schemaLocation='http://www.blizzard.com/wow/ui/'>
+	<Script file='snipe.lua'/> 
+  
+	<Frame>
+      <Scripts> 
+			<OnLoad> 
+				this:RegisterEvent('ADDON_LOADED')
+				this:RegisterEvent('AUCTION_HOUSE_SHOW')
+				this:RegisterEvent('AUCTION_HOUSE_CLOSED')
+				this:RegisterEvent('AUCTION_ITEM_LIST_UPDATE')
+			</OnLoad>
+			<OnEvent> 
+				snipe.on_event()
+			</OnEvent>
+			<OnUpdate>
+				snipe.on_update()
+			</OnUpdate>
+		</Scripts> 
+	</Frame>
+	
+	<GameTooltip name='SNIPE_SCAN_TOOLTIP' inherits='GameTooltipTemplate'/>
+</Ui>
