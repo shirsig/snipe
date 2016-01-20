@@ -62,20 +62,6 @@ function snipe.log(msg)
 	end
 end
 
-function snipe.format_money(val)
-	local g = math.floor(val / 10000)	
-	val = val - g * 10000	
-	local s = math.floor(val / 100)	
-	val = val - s * 100	
-	local c = math.floor(val)
-	
-	local g_string = g ~= 0 and g .. 'g' or ''
-	local s_string = s ~= 0 and s .. 's' or ''
-	local c_string = (c ~= 0 or g == 0 and s == 0) and c .. 'c' or ''
-			
-	return g_string .. s_string .. c_string
-end
-
 function snipe.stop()
 	snipe.running = false
 end
