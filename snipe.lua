@@ -212,7 +212,7 @@ function snipe.wait_for_page(k)
 	end, k)
 end
 
-function snipe.owner_data_complete(k)
+function snipe.owner_data_complete()
 	local n, _ = GetNumAuctionItems('list')
 	for i = 1, n do
 		local auction_info = snipe.auction_info(i)
