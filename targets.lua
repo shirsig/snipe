@@ -120,21 +120,8 @@ snipe.target_sets = {
 	},
 	pve = {
 		-- twink gear
-		{ g=7, "scouting gloves of the monkey", "+4 agility", "+4 stamina" },
-		{ g=7, "wrangler's wristbands of the monkey", "+3 agility", "+3 stamina" },
-		{ g=20, "shadowfang" },
-		{ g=7, "sentry cloak" },
-		{ g=7, "feet of the lynx" },
-		{ g=4, "assassin's blade" },
-		{ g=2, "meadow ring", "+5 agility" },
-		{ g=15, "meadow ring", "+3 agility", "+3 stamina" },
-		{ g=4, "meadow ring", "+1 agility", "+1% dodge" },
-
-		{ g=5, "pathfinder hat of the monkey", "+9 agility", "+9 stamina" },
-		
-		{ g=20, "pendulum of doom" },
-		{ g=20, "staff of jordan" },
-		
-		{ g=5, "libram of constitution" },
+		{ g=7, "hook dagger", "+6 fire spell damage" },
+		{ g=5, "wrangler's wristbands of the monkey", "+3 agility", "+3 stamina" },
+		{ g=12, "shadowfang" },
 	},
 }

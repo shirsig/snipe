@@ -1,5 +1,4 @@
 ## Interface: 11200
 ## Title: Snipe
-## Notes: Sniping auctions
 snipe.xml
 targets.lua

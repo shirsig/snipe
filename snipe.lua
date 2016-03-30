@@ -1,6 +1,3 @@
-local version = '1.0'
-local author = 'shirsig'
-
 local PAGE_SIZE = 50
 
 local auction_list_updated
@@ -8,7 +5,7 @@ local auction_list_updated
 snipe = {}
 
 function snipe.on_load()
-	snipe.log('Snipe v'..version..' loaded')
+	snipe.log('Snipe loaded')
 end
 
 function snipe.on_event()
@@ -24,7 +21,7 @@ function snipe.on_event()
 end
 
 function snipe.on_update()
-	if snipe.running and snipe.state and snipe.state.p() then
+	if snipe.state and snipe.state.p() then
 		return snipe.state.callback()
 	end
 end
@@ -49,7 +46,7 @@ function snipe.on_auction_house_show()
 end
 
 function snipe.on_auction_house_closed()
-	if snipe.running then
+	if snipe.state then
 		snipe.log('Snipe scan stopped.')
 	end
 	snipe.stop()
@@ -63,14 +60,11 @@ function snipe.log(msg)
 end
 
 function snipe.stop()
-	snipe.running = false
+	snipe.state = nil
 end
 
 function snipe.start()
-	snipe.on_next_update(function()
-		snipe.run()
-	end)	
-	snipe.running = true
+	snipe.run()
 end
 
 function snipe.run(page)
@@ -109,7 +103,6 @@ end
 
 function snipe.get_page(page, k)
 	snipe.as_soon_as(CanSendAuctionQuery, function()
-		snipe.wait_for_page(k)
 		QueryAuctionItems(
 			nil,
 			nil,
@@ -119,6 +112,7 @@ function snipe.get_page(page, k)
 			nil,
 			page
 		)
+		snipe.wait_for_page(k)
 	end)
 end
 
@@ -199,34 +193,14 @@ function snipe.auction_info(i)
 end
 
 function snipe.wait_for_page(k)
-	local t0 = time()
 	auction_list_updated = false
-	
-	snipe.as_soon_as(function()
-		if time() - t0 > 5 then -- we won't wait longer than 5 seconds
-			return true
-		end
-		
-		return auction_list_updated and snipe.owner_data_complete()
-		
-	end, k)
-end
-
-function snipe.owner_data_complete()
-	local n, _ = GetNumAuctionItems('list')
-	for i = 1, n do
-		local auction_info = snipe.auction_info(i)
-		if not auction_info.owner then
-			return false
-		end
-	end
-	return true
+	snipe.as_soon_as(function() return auction_list_updated	end, k)
 end
 
 SLASH_SNIPE1 = '/snipe'
 function SlashCmdList.SNIPE(parameter)
 	if parameter == '' then
-		if snipe.running then
+		if snipe.state then
 			snipe.stop()
 			snipe.log('Snipe scan stopped.')
 		else
