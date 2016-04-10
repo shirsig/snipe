@@ -5,7 +5,7 @@ local auction_list_updated
 snipe = {}
 
 function snipe.on_load()
-	snipe.log('Snipe loaded')
+	snipe.log('Loaded')
 end
 
 function snipe.on_event()
@@ -42,12 +42,11 @@ end
 
 function snipe.on_auction_house_show()
 	snipe.ready = true
-	snipe.log('Snipe is ready.')
 end
 
 function snipe.on_auction_house_closed()
 	if snipe.state then
-		snipe.log('Snipe scan stopped.')
+		snipe.log('Scan stopped.')
 	end
 	snipe.stop()
 	snipe.ready = false
@@ -55,7 +54,7 @@ end
 
 function snipe.log(msg)
 	if DEFAULT_CHAT_FRAME then
-		DEFAULT_CHAT_FRAME:AddMessage(msg, 1, 1, 0)
+		DEFAULT_CHAT_FRAME:AddMessage('[snipe] '..msg, 1, 1, 0)
 	end
 end
 
@@ -202,17 +201,17 @@ function SlashCmdList.SNIPE(parameter)
 	if parameter == '' then
 		if snipe.state then
 			snipe.stop()
-			snipe.log('Snipe scan stopped.')
+			snipe.log('Scan stopped.')
 		else
-			snipe.log('Snipe is not running.')
+			snipe.log('Not running.')
 		end
 	elseif snipe.target_sets[parameter] then
 		if not snipe.ready then
-			snipe.log('Snipe is not ready.')
+			snipe.log('Not ready.')
 		else
 			snipe.targets = snipe.target_sets[parameter]
 			snipe.start()
-			snipe.log('Snipe scan for target set "'..parameter..'" started.')
+			snipe.log('Scan for target set "'..parameter..'" started.')
 		end
 	else
 		snipe.log('No target set with name "'..parameter..'".')
