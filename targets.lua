@@ -127,14 +127,14 @@ snipe.target_sets = {
 	kronos = {
 		{ g=1, "scouting gloves of the monkey", "+4 agility", "+4 stamina" },
 		{ g=1, "wrangler's wristbands of the monkey", "+3 agility", "+3 stamina" },
-		{ g=3, "hook dagger", "+4 fire spell damage" },
-		{ g=3, "greenweave sash", "+9 fire spell damage" },
-		{ g=3, "shimmering sash", "+9 fire spell damage" },
-		{ g=3, "greenweave bracers", "+6 fire spell damage" },
-		{ g=3, "pagan mitts", "+9 fire spell damage" },
+		-- { g=3, "hook dagger of fiery wrath", "+4 fire spell damage" },
+		-- { g=3, "greenweave sash of fiery wrath", "+9 fire spell damage" },
+		-- { g=3, "shimmering sash of fiery wrath", "+9 fire spell damage" },
+		-- { g=3, "greenweave bracers of fiery wrath", "+6 fire spell damage" },
+		{ g=3, "pagan mitts of fiery wrath", "+9 fire spell damage" },
 		-- { g=1, "watcher's cape", "+7 fire spell damage" },
 		-- { g=1, "sentry's cape", "+7 fire spell damage" },
 		-- { g=1, "superior cloak", "+7 fire spell damage" },
-		{ g=3, "shimmering trousers", "+11 fire spell damage" },
+		-- { g=3, "shimmering trousers of fiery wrath", "+11 fire spell damage" },
 	}
 }
